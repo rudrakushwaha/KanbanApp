@@ -1,6 +1,5 @@
 // import express from "express";
-// import bodyParser from "body-parser";
-// import axios from "axios";
+
 const bodyParser=require("body-parser")
 const express=require("express")
 const axios=require("axios")
@@ -22,26 +21,18 @@ const corsOptions ={
 }
 app.use(cors(corsOptions));
 
+//PORT AND URL
 const PORT = process.env.PORT || 3000;
 const API_URL =  "https://api-74io.onrender.com" || "http://localhost:3000";
 
-// const dotenv= require("dotenv")   //requiring dotenv
-
-
-//including or using dotenv to secure our necessary or important data
-// dotenv.config({path:"./config.env"})
-
-// require("./db/connection")
-
-// app.use(express.static("public"));
-// Use path.join to construct the correct file path
-// app.use('/public', express.static(path.join(__dirname, 'public')));
+//SERVING STATIC FILES
 app.use( express.static(path.join(__dirname, 'public')));
 
-
+//CONFIG BODYPARSER
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//SETTING VIEWS ENGINE
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -60,9 +51,10 @@ app.get("/", async (req, res) => {
 app.get("/new/:id", (req, res) => {
   console.log(req.params.id)
   // console.log(id)
-  res.render("modify.ejs", { heading: "New Post", submit: "Create Post",id:req.params.id });
+  res.render("modify.ejs", { heading: "New Post", submit: "Create Task",id:req.params.id });
 });
 
+//DISPLAYING ROUTE FOR EDIT
 app.get("/edit/:id", async (req, res) => {
   try {
     console.log(req.params.id)
@@ -71,7 +63,7 @@ app.get("/edit/:id", async (req, res) => {
     console.log(response.data);
     res.render("modify.ejs", {
       heading: "Edit Post",
-      submit: "Update Post",
+      submit: "Update Task",
       post: response.data,
     });
   } catch (error) {
@@ -98,14 +90,7 @@ app.post("/api/posts/:id", async (req, res) => {
       `${API_URL}/posts/${req.params.id}`,
       req.body
     );
-    // console.log(response.data)
-    // console.log(response.data.columnId)
-    // console.log("helloies")
-    // console.log(response.data);
-    // console.log("helloies")
-    // res.redirect("/");F
-    // const uppost=
-    // res.render("index.ejs", { posts: response.data });
+    
     res.redirect("/")
 
   } catch (error) {
