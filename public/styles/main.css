@@ -1,0 +1,230 @@
+/* Reset some default browser styles */
+
+  /* @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato:wght@900&family=Poppins:wght@400;500;900&family=Quicksand&display=swap'); */
+  
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato:wght@900&family=Poppins:wght@400;500;900&family=Quicksand:wght@500&display=swap');
+
+
+body,
+h1,
+h2,
+p,
+ul,
+li,
+form,
+input,
+textarea,
+a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  background-color: #f7f9fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px 40px;
+  border-radius: 8px;
+  /* background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #444;
+  font-family:'DM Serif Display', serif;;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+p,
+input,
+textarea {
+  margin-bottom: 20px;
+}
+
+small {
+  display: block;
+  margin-bottom: 20px;
+  color: #888;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+}
+
+a,
+button {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.full-width {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+a,
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 20px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 1rem 1rem;
+  border-radius: 10px;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+a.edit {
+  background-color: #007bff;
+  /* margin-right: 10px; */
+}
+
+a.delete {
+  background-color: #e74c3c;
+}
+
+a.delete:hover {
+  background-color: #c0392b;
+}
+
+#newPostBtn {
+  margin: 20px 0;
+  background-color: #2ecc71;
+  padding: 10px 15px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+#newPostBtn:hover {
+  background-color: #27ae60;
+}
+.flex-box{
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+
+}
+/* #postsList{
+  margin: 10px auto;
+} */
+.hide{
+  display: none;
+}
+.dragged-item {
+  background-color: lightblue;
+  border: 2px solid blue;
+}
+
+.dashed {
+  border: 2px dashed gray;
+}
+/* For smaller screens (e.g., smartphones) */
+@media only screen and (max-width:600px) {
+
+  .container {
+      max-width:100%; /* Adjust the max-width as needed */
+      padding-left:10px; /* Adjust the padding as needed */
+      padding-right:10px; /* Adjust the padding as needed */
+  }
+
+  h1 {
+      font-size:2em; /* Adjust the font size as needed */
+  }
+
+  h2 {
+      font-size:1.2em; /* Adjust the font size as needed */
+  }
+
+  li {
+      margin-left:auto; /* Center the list items */
+      margin-right:auto; /* Center the list items */
+  }
+
+  .flex-box {
+      flex-direction: column; /* Adjust the flex direction as needed */
+      justify-content: center; /* Center the flex items vertically */
+      align-items: center; /* Center the flex items horizontally */
+  }
+
+}
+/* For medium-sized screens (e.g., tablets) */
+@media only screen and (min-width:601px) and (max-width:1024px) {
+
+  .container {
+      max-width:800px; /* Adjust the max-width as needed */
+      padding-left:20px; /* Adjust the padding as needed */
+      padding-right:20px; /* Adjust the padding as needed */
+  }
+
+  h1 {
+      font-size:2em; /* Adjust the font size as needed */
+  }
+
+  h2 {
+      font-size:1.3em; /* Adjust the font size as needed */
+  }
+
+  li {
+      margin-left:auto; /* Center the list items */
+      margin-right:auto; /* Center the list items */
+  }
+  a.edit,
+  a.delete {
+    display:inline-block;
+    margin-bottom:10px;
+  }
+
+}

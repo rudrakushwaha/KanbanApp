@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+  <div class="flex-box">
+    <div id="fcont" class="container" value="1" data-column-id="column1" ">
+      <!-- <form action="/api/posts" method="post"> -->
+      <h1>To Do</h1>
+      <input type="hidden" name="columnId" value="column1"> 
+      <!-- <button type="submit" name="column1" value="column1"><a id="newPostBtn" href="/new">New Post</a></button> -->
+      <!-- <a id="newPostBtn" href="/new/1"> <button type="submit" >New post</button></a> -->
+      <a id="newPostBtn" href="/new/1">New Task</a>
+
+
+      <ul id="postsList">
+        <% posts.column1.forEach(post => { %>
+          <li class="list-item" draggable="true">
+            <h2>
+              <%=post.title%>
+            </h2>
+            <small>
+              <%=post.date %>
+            </small>
+            <p>
+              <%=post.content%>
+            </p>
+            <small>By: <%=post.author%> </small>
+            <a class="edit" href="/edit/<%= post._id %>">Edit</a>
+            <a class="delete" href="/api/posts/delete/<%= post._id %>">Delete</a>
+          </li>
+          <% }); %>
+      </ul>
+    <!-- </form> -->
+    </div>
+    <div id="scont" class="container" value="2" data-column-id="column2" ">
+      <!-- <form action="/api/posts" method="post"> -->
+
+        <h1>Doing</h1>
+        <input type="hidden" name="columnId" value="column2"> 
+        <!-- <button type="submit" name="column2" value="column2"><a id="newPostBtn" href="/new">New Post</a></button> -->
+       <!-- <a id="newPostBtn" href="/new/2"> <button type="submit" >New post</button></a> -->
+       <a id="newPostBtn" href="/new/2">New Task</a>
+
+
+       <ul id="postsList">
+        <% posts.column2.forEach(post => { %>
+          <li class="list-item" draggable="true">
+            <h2>
+              <%=post.title%>
+            </h2>
+            <small>
+              <%=post.date %>
+            </small>
+            <p>
+              <%=post.content%>
+            </p>
+            <small>By: <%=post.author%> </small>
+            <a class="edit" href="/edit/<%= post._id %>">Edit</a>
+            <a class="delete" href="/api/posts/delete/<%= post._id %>">Delete</a>
+          </li>
+          <% }); %>
+        </ul>
+      <!-- </form> -->
+    </div>
+    <div id="tcont" class="container" value="3" data-column-id="column3" >
+      <!-- <form action="/api/posts" method="post"> -->
+
+        <h1>Done</h1>
+        <input type="hidden" name="columnId" value="column3"> 
+       <!-- <a id="newPostBtn" href="/new/3"> <button type="submit" >New post</button></a> -->
+       <a id="newPostBtn" href="/new/3">New Task</a>
+       <ul id="postsList">
+        <% posts.column3.forEach(post => { %>
+          <li class="list-item" draggable="true">
+            <h2>
+              <%=post.title%>
+            </h2>
+            <small>
+              <%=post.date %>
+            </small>
+            <p>
+              <%=post.content%>
+            </p>
+            <small>By: <%=post.author%> </small>
+            <a class="edit" href="/edit/<%= post._id %>">Edit</a>
+            <a class="delete" href="/api/posts/delete/<%= post._id %>">Delete</a>
+          </li>
+          <% }); %>
+        </ul>
+      <!-- </form> -->
+    </div>
+  </div>
+
+  <script>
+
+       // Get all the containers
+       const columns = document.getElementsByClassName('container');
+
+       // Add event listeners for each draggable list item
+const listItems = document.querySelectorAll('.list-item');
+    listItems.forEach(listItem => {
+      listItem.addEventListener('dragstart', () => {
+        listItem.classList.add('dragged-item');
+      });
+
+      listItem.addEventListener('dragend', () => {
+        listItem.classList.remove('dragged-item');
+      });
+    });
+
+
+// Add event listeners for each container
+Array.from(columns).forEach(column => {
+  column.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.currentTarget.classList.add('dashed');
+  });
+
+  column.addEventListener('dragenter', (e) => {
+    e.currentTarget.classList.add('dashed');
+  });
+
+  column.addEventListener('dragleave', (e) => {
+    e.currentTarget.classList.remove('dashed');
+  });
+
+  column.addEventListener('drop', (e) => {
+    e.preventDefault(); // Prevent default behavior
+
+    const draggedItem = document.querySelector('.dragged-item');
+
+    if (draggedItem && draggedItem.parentElement !== e.currentTarget) {
+      // const listItem = document.createElement('li');
+      // listItem.appendChild(draggedItem);
+      // e.currentTarget.querySelector('ul').appendChild(listItem);
+      // e.currentTarget.classList.remove('dashed');
+      e.currentTarget.querySelector('ul').appendChild(draggedItem);
+      e.currentTarget.classList.remove('dashed');
+      const columnId = e.currentTarget.getAttribute('data-column-id');
+      const listItem = draggedItem.querySelector('.list-item');
+      console.log(columnId)
+      console.log(draggedItem)
+      draggedItem.setAttribute('data-column-id', columnId);
+
+      
+
+
+
+    }
+  });
+});
+
+
+
+
+
+
+
+// const listItem = document.querySelectorAll('.list-items');
+// console.log(listItem)
+// const columns = document.getElementsByClassName('container');
+// console.log(columns)
+
+// // Event listeners for draggable element imgBox
+// const listItems = document.querySelectorAll('.list-items');
+
+// listItems.forEach((listItem) => {
+//   listItem.addEventListener('dragstart', (e) => {
+//     console.log('DragStart has been triggered');
+//     // setTimeout(() => {
+//     //     e.target.className = 'hide';
+//     // }, 0);
+//     // Add your logic here
+//   });
+
+//   listItems.forEach((listItem)=>{
+
+//     listItem.addEventListener('dragend', (e) => {
+//       console.log('DragEnd has been triggered');
+//       // Add your logic here
+//     });
+//   })
+// });
+
+// for (column of columns) {
+//     column.addEventListener('dragover', (e) => {
+//         e.preventDefault();
+//         console.log('DragOver has been triggered');
+//     });
+
+//     column.addEventListener('dragenter', (e) => {
+//         console.log('DragEnter has been triggered');
+//         // e.target.className += ' dashed'; 
+//     })
+
+//     column.addEventListener('dragleave', (e) => {
+//         console.log('DragLeave has been triggered');
+//         e.target.className = 'whiteBox'
+//     })
+
+//     column.addEventListener('drop', (e) => {
+//         console.log('Drop has been triggered');
+//         // e.target.append(listItem);
+//           e.target.append(listItems[e.currentTarget.getAttribute('value')])
+        
+//     })
+// }
+
+    // console.log("drag and drop")
+    // function allowDrop(event) {
+    //   event.preventDefault();
+    // }
+
+    // function drag(event) {
+    //   event.dataTransfer.setData("text/plain", event.target.id);
+    // }
+
+    // function drop(event) {
+    //   event.preventDefault();
+    //   var noteId = event.dataTransfer.getData("text/plain");
+    //   var targetColumnId = event.currentTarget.getAttribute("data-column-id");
+      
+    //   // Perform any necessary logic to update the note's column in your backend/database
+      
+    //   // Example code to move the dragged note element
+    //   var noteElement = document.getElementById(noteId);
+    //   var targetContainer = event.currentTarget;
+    //   targetContainer.appendChild(noteElement);
+    // }
+  </script>
+</body>
+
+</html>
+
