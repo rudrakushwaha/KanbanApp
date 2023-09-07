@@ -9,9 +9,21 @@ const path = require('path');
 
 
 
+
+
 const app = express();
+
+//cors policy
+const cors = require('cors');
+const corsOptions ={
+  origin: '*', 
+  credentials: true,
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
 const PORT = process.env.PORT || 3000;
-const API_URL =  "https://api-74io.onrender.com";
+const API_URL =  "https://api-74io.onrender.com" || "http://localhost:3000";
 
 // const dotenv= require("dotenv")   //requiring dotenv
 
