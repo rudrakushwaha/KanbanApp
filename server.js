@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const API_URL =  "https://api-74io.onrender.com";
 
 // const dotenv= require("dotenv")   //requiring dotenv
@@ -107,5 +107,5 @@ app.get("/api/posts/delete/:id", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Backend server is running on http://localhost:${port}`);
+  console.log(`Backend server is running on http://localhost:${PORT}`);
 });
