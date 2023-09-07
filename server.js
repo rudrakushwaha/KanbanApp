@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
-const API_URL = "http://localhost:4000";
+const API_URL =  "https://api-74io.onrender.com";
 // const dotenv= require("dotenv")   //requiring dotenv
 
 
