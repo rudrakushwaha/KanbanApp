@@ -198,9 +198,9 @@ a.delete:hover {
       justify-content: center; /* Center the flex items vertically */
       align-items: center; /* Center the flex items horizontally */
   }
-  .center{
+  /* .center{
     text-align: left;
-  }
+  } */
 
 }
 /* For medium-sized screens (e.g., tablets) */
@@ -239,4 +239,5 @@ a.delete:hover {
   font-weight: bold;
   /* line-height: 1rem; */
   letter-spacing: 10px;
+   
 }
