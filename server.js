@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 const API_URL =  "https://api-74io.onrender.com";
+
 // const dotenv= require("dotenv")   //requiring dotenv
 
 
@@ -24,6 +25,8 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.set('view engine', 'ejs');
 
 // Route to render the main page
 app.get("/", async (req, res) => {
