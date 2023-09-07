@@ -20,13 +20,14 @@ const API_URL =  "https://api-74io.onrender.com";
 
 // require("./db/connection")
 
-
 app.use(express.static("public"));
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Route to render the main page
 app.get("/", async (req, res) => {
