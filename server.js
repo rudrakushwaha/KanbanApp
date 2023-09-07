@@ -23,7 +23,8 @@ const API_URL =  "https://api-74io.onrender.com";
 
 // app.use(express.static("public"));
 // Use path.join to construct the correct file path
-app.use('/public', express.static(path.join(__dirname, 'public')));
+// app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use( express.static(path.join(__dirname, 'public')));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
